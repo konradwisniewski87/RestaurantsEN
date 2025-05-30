@@ -2,7 +2,7 @@
 @port = 5237
 @Restaurants.API_HostAddress = {{host}}:{{port}}
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/example
+GET {{Restaurants.API_HostAddress}}/api/restaurants/
 Accept: application/json
 ProjectUrl: {{$projectUrl}}
 Guid: {{$guid}}
@@ -13,7 +13,3 @@ Random_int: {{$randomInt}}
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
-
-{
-    "email": "test@test.com"
-}
