@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.API", "Restaurants.API\Restaurants.API.csproj", "{A1D874F4-392D-4059-9752-7D56DB7BC7A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.Domain", "Restaurants.Domain\Restaurants.Domain.csproj", "{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +29,23 @@ Global
 		{A1D874F4-392D-4059-9752-7D56DB7BC7A7}.Release|x64.Build.0 = Release|Any CPU
 		{A1D874F4-392D-4059-9752-7D56DB7BC7A7}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1D874F4-392D-4059-9752-7D56DB7BC7A7}.Release|x86.Build.0 = Release|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Debug|x64.Build.0 = Debug|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Debug|x86.Build.0 = Debug|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Release|x64.ActiveCfg = Release|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Release|x64.Build.0 = Release|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Release|x86.ActiveCfg = Release|Any CPU
+		{BB6B157D-A9A2-4AA4-9E3E-F0C07987DE5B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F15A29DD-DBEF-4468-B155-5774F5E3E8E4}
 	EndGlobalSection
 EndGlobal
