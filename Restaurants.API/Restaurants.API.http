@@ -1,15 +1,9 @@
 @host = https://localhost
-@port = 5237
+# @port = 5237
+@port = 7290
 @Restaurants.API_HostAddress = {{host}}:{{port}}
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/
-Accept: application/json
-ProjectUrl: {{$projectUrl}}
-Guid: {{$guid}}
-LocalDate: {{localDate iso8601}}
-Random_int: {{$randomInt}}
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+
 
 ###
-
-POST {{Restaurants.API_HostAddress}}/api/restaurants
-Content-Type: application/json
