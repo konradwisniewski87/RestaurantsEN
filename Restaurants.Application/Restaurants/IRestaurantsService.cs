@@ -7,7 +7,7 @@ namespace Restaurants.Application.Restaurants
         Task<IEnumerable<RestaurantDto>> GetAllRestaurantsAsync();
         Task<RestaurantDto?> GetRestaurantByIdAsync(int id);
         Task<int> AddRestaurantAsync(CreateRestaurantDto restaurantDto);
-        Task UpdateRestaurantAsync(RestaurantDto restaurantDto);
+        Task UpdateRestaurantAsync(int id, CreateRestaurantDto restaurantDto);
         Task DeleteRestaurantAsync(int id);
     }
 }

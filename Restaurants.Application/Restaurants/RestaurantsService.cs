@@ -34,9 +34,10 @@ public class RestaurantsService(IRestaurantsRepository restaurantsRepositories,
         return id;
     }
 
-    public async Task UpdateRestaurantAsync(CreateRestaurantDto restaurantDto)
+    public async Task UpdateRestaurantAsync(int id, CreateRestaurantDto restaurantDto)
     {
         Restaurant restaurant = mapper.Map<Restaurant>(restaurantDto);
+        restaurant.Id = id;
         logger.LogInformation($"Updating restaurant with ID {restaurant.Id}.");
         await restaurantsRepositories.UpdateAsync(restaurant);
     }

@@ -39,9 +39,9 @@ public class RestaurantsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateRestaurantDto restaurant)
     {
-        if (restaurant is null)
+        if (!ModelState.IsValid)
         {
-            return BadRequest("Restaurant cannot be null.");
+            return BadRequest(ModelState);
         }
         int id = await _restaurantsService.AddRestaurantAsync(restaurant);
         return CreatedAtAction(nameof(GetById), new { id }, restaurant);
@@ -50,9 +50,9 @@ public class RestaurantsController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] CreateRestaurantDto restaurant)
     {
-        if (restaurant is null)
+        if (!ModelState.IsValid)
         {
-            return BadRequest("Restaurant data is invalid.");
+            return BadRequest(ModelState);
         }
 
         var existingRestaurant = await _restaurantsService.GetRestaurantByIdAsync(id);
@@ -60,8 +60,6 @@ public class RestaurantsController : ControllerBase
         {
             return NotFound();
         }
-
-        restaurant.Id = id;
 
         await _restaurantsService.UpdateRestaurantAsync(id, restaurant);
         return NoContent();
