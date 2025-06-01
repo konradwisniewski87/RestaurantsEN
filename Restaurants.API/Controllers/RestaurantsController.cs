@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
+using Restaurants.Application.Restaurants.Dtos;
 using Restaurants.Domain.Entities;
 
 namespace Restaurants.API.Controllers;
@@ -24,11 +25,11 @@ public class RestaurantsController : ControllerBase
 
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
+    public async Task<IActionResult> GetById([FromRoute] int id)
     {
 
         var restaurant = await _restaurantsService.GetRestaurantByIdAsync(id);
-        if (restaurant == null)
+        if (restaurant is null)
         {
             return NotFound();
         }
@@ -36,37 +37,42 @@ public class RestaurantsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] Restaurant restaurant)
+    public async Task<IActionResult> Create([FromBody] CreateRestaurantDto restaurant)
     {
-        if (restaurant == null)
+        if (restaurant is null)
         {
             return BadRequest("Restaurant cannot be null.");
         }
-        await _restaurantsService.AddRestaurantAsync(restaurant);
-        return CreatedAtAction(nameof(GetById), new { id = restaurant.Id }, restaurant);
+        int id = await _restaurantsService.AddRestaurantAsync(restaurant);
+        return CreatedAtAction(nameof(GetById), new { id }, restaurant);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromBody] Restaurant restaurant)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] CreateRestaurantDto restaurant)
     {
-        if (restaurant == null || restaurant.Id != id)
+        if (restaurant is null)
         {
             return BadRequest("Restaurant data is invalid.");
         }
+
         var existingRestaurant = await _restaurantsService.GetRestaurantByIdAsync(id);
-        if (existingRestaurant == null)
+        if (existingRestaurant is null)
         {
             return NotFound();
         }
-        await _restaurantsService.UpdateRestaurantAsync(restaurant);
+
+        restaurant.Id = id;
+
+        await _restaurantsService.UpdateRestaurantAsync(id, restaurant);
         return NoContent();
     }
 
+
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
         var existingRestaurant = await _restaurantsService.GetRestaurantByIdAsync(id);
-        if (existingRestaurant == null)
+        if (existingRestaurant is null)
         {
             return NotFound();
         }

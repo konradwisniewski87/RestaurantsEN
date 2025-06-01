@@ -7,36 +7,48 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants HTTP/1.1
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/1 HTTP/1.1
+GET {{Restaurants.API_HostAddress}}/api/restaurants/5 HTTP/1.1
 
 ###
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants HTTP/1.1
+Content-Type: application/json; charset=utf-8
 
-Content-Type: application/json
 {
   "name": "Test Restaurant",
   "description": "A test restaurant for API testing",
-  "address": "123 Test St, Test City, TC 12345",
-  "phoneNumber": "123-456-7890",
-  "email": "
+  "category": "Italian",
+  "hasDelivery": true,
+  "contactEmail": "test@example.com",
+  "contactNumber": "1234567890",
+  "street": "123 Test St",
+  "city": "Test City",
+  "postalCode": "TC 12345"
 }
+
+
+
 ###
 
-PUT {{Restaurants.API_HostAddress}}/api/restaurants/1 HTTP/1.1
+PUT {{Restaurants.API_HostAddress}}/api/restaurants/5 HTTP/1.1
+Content-Type: application/json; charset=utf-8
 
-Content-Type: application/json
 {
-  "name": "Updated Restaurant",
-  "description": "An updated description for the restaurant",
-  "address": "456 Updated St, Updated City, UC 67890",
-  "phoneNumber": "987-654-3210",
-  "email": "
+  "name": "Restaurante",
+  "description": "A test restaurant for API testing",
+  "category": "Italian",
+  "hasDelivery": false,
+  "contactEmail": "test@example.com",
+  "contactNumber": "1234567890",
+  "street": "123 Test St",
+  "city": "Test City",
+  "postalCode": "TC 12345"
 }
+
 
 ###
 
-DELETE {{Restaurants.API_HostAddress}}/api/restaurants/1 HTTP/1.1
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/9 HTTP/1.1
 
 ###
 
