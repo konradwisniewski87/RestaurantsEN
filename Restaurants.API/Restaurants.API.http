@@ -3,7 +3,40 @@
 @port = 7290
 @Restaurants.API_HostAddress = {{host}}:{{port}}
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants
-
+GET {{Restaurants.API_HostAddress}}/api/restaurants HTTP/1.1
 
 ###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/1 HTTP/1.1
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants HTTP/1.1
+
+Content-Type: application/json
+{
+  "name": "Test Restaurant",
+  "description": "A test restaurant for API testing",
+  "address": "123 Test St, Test City, TC 12345",
+  "phoneNumber": "123-456-7890",
+  "email": "
+}
+###
+
+PUT {{Restaurants.API_HostAddress}}/api/restaurants/1 HTTP/1.1
+
+Content-Type: application/json
+{
+  "name": "Updated Restaurant",
+  "description": "An updated description for the restaurant",
+  "address": "456 Updated St, Updated City, UC 67890",
+  "phoneNumber": "987-654-3210",
+  "email": "
+}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/1 HTTP/1.1
+
+###
+
