@@ -1,16 +1,22 @@
 @host = https://localhost
-# @port = 5237
-@port = 7290
-@Restaurants.API_HostAddress = {{host}}:{{port}}
+@portSSH = 7290
+@port = 5237
+@Restaurants.API_HostAddress = {{host}}:{{portSSH}}
 
+###
+# GET all restaurants
 GET {{Restaurants.API_HostAddress}}/api/restaurants HTTP/1.1
 
 ###
-
-GET {{Restaurants.API_HostAddress}}/api/restaurants/5 HTTP/1.1
+# GET restaurant by ID
+GET {{Restaurants.API_HostAddress}}/api/restaurants/5 HTTP/1.
 
 ###
+# GET restaurant by ID
+GET {{Restaurants.API_HostAddress}}/api/restaurants/12 HTTP/1.1
 
+###
+# POST – create restaurant
 POST {{Restaurants.API_HostAddress}}/api/restaurants HTTP/1.1
 Content-Type: application/json; charset=utf-8
 
@@ -23,32 +29,22 @@ Content-Type: application/json; charset=utf-8
   "contactNumber": "1234567890",
   "street": "123 Test St",
   "city": "Test City",
-  "postalCode": "TC 12345"
+  "postalCode": "12-345"
 }
 
-
-
 ###
-
-PUT {{Restaurants.API_HostAddress}}/api/restaurants/5 HTTP/1.1
+# PATCH – update restaurant
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/11 HTTP/1.1
 Content-Type: application/json; charset=utf-8
 
 {
-  "name": "Restaurante",
-  "description": "A test restaurant for API testing",
-  "category": "Italian",
+  "name": "Updated Restaurant",
+  "description": "Updated description",
   "hasDelivery": false,
-  "contactEmail": "test@example.com",
-  "contactNumber": "1234567890",
-  "street": "123 Test St",
-  "city": "Test City",
-  "postalCode": "TC 12345"
 }
 
-
 ###
-
+# DELETE restaurant by ID
 DELETE {{Restaurants.API_HostAddress}}/api/restaurants/9 HTTP/1.1
 
-###
 

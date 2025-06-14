@@ -18,14 +18,10 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
         return restaurant.Id;
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Restaurant restaurant, CancellationToken cancellationToken)
     {
-        var restaruant = await dbContext.Restaurants.FindAsync(id);
-        if (restaruant is not null)
-        {
-            dbContext.Restaurants.Remove(restaruant!);
-            await dbContext.SaveChangesAsync();
-        }
+        dbContext.Remove(restaurant);
+        await dbContext.SaveChangesAsync();
     }
 
     public async Task<IEnumerable<Restaurant>> GetAllAsync()
@@ -36,14 +32,14 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
         return restaurants;
     }
 
-    public async Task<Restaurant?> GetByIdAsync(int id)
+    public async Task<Restaurant?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
         var restaurant = await dbContext.Restaurants
             .Include(r => r.Dishes)
             .FirstOrDefaultAsync(r => r.Id == id);
         return restaurant;
     }
-
+    #region
     public async Task UpdateAsync(Restaurant restaurant)
     {
         var restaurantToUpdate = await dbContext.Restaurants.FindAsync(restaurant.Id);
@@ -59,4 +55,6 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext) : IRestaura
             throw new KeyNotFoundException($"Restaurant with ID {restaurant.Id} not found.");
         }
     }
+    #endregion
+    public Task SaveChanges() => dbContext.SaveChangesAsync();
 }
