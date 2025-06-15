@@ -16,12 +16,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Host.UseSerilog((context, configuration) =>
 {
-    configuration.ReadFrom.Configuration(context.Configuration)
-        .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
-        .MinimumLevel.Override("Microsoft.EntityFrameworkCore", Serilog.Events.LogEventLevel.Warning)
-        //.MinimumLevel.Override("System", Serilog.Events.LogEventLevel.Warning)
-        .Enrich.FromLogContext()
-        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] |{SourceContext}| {NewLine}{Message:lj}{NewLine}{Exception}");
+    configuration.ReadFrom.Configuration(context.Configuration);
 });
 
 var app = builder.Build();
