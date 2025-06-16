@@ -1,7 +1,7 @@
 @host = https://localhost
-@portSSH = 7290
+@portSSL = 7290
 @port = 5237
-@Restaurants.API_HostAddress = {{host}}:{{portSSH}}
+@Restaurants.API_HostAddress = {{host}}:{{portSSL}}
 
 ###
 # GET all restaurants
@@ -9,7 +9,7 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants HTTP/1.1
 
 ###
 # GET restaurant by ID
-GET {{Restaurants.API_HostAddress}}/api/restaurants/5 HTTP/1.
+GET {{Restaurants.API_HostAddress}}/api/restaurants/5 HTTP/1.1
 
 ###
 # GET restaurant by ID
