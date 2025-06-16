@@ -41,6 +41,8 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 
     #region
     [HttpPatch("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateRestaurantCommand command)
     {
         command.Id = id;
